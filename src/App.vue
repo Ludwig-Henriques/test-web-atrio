@@ -1,91 +1,100 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
 <template>
-  <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-    />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+  <div>
+    <header>
+      <p>Test technique WEB-ATRIO réalisé par HENRIQUES Ludwig</p>
+      <p>réalisé le 23/10/2022</p>
+    </header>
+    <div class="list">
+      <div class="progress-bar">
+        <p class="progress-bar__title">Initialisation du test technique</p>
+        <div class="progress-bar__content">
+          <p class="progress-bar__content__value">50%</p>
+          <p class="progress-bar__content__bar"></p>
+        </div>
+      </div>
+      <div class="progress-bar">
+        <p class="progress-bar__title">Avancement de la phase de développement</p>
+        <div class="progress-bar__content">
+          <p class="progress-bar__content__value">50%</p>
+          <p class="progress-bar__content__bar"></p>
+        </div>
+      </div>
     </div>
-  </header>
-
-  <RouterView />
+    <div class="control">
+      <span class="button">Remettre à zero les compteur</span>
+      <span class="button">Ajouter 5%</span>
+      <span class="button">Ajouter 10%</span>
+    </div>
+  </div>
 </template>
 
 <style scoped>
 header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
+  width: 450px;
+  margin: 81px auto;
   text-align: center;
-  margin-top: 2rem;
+  font-size: 16px;
+  font-weight: bold;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.list {
+  margin-bottom: 100px;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+.progress-bar {
+  font-weight: 200;
 }
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+.progress-bar:not(:last-child) {
+  margin-bottom: 49px;
 }
 
-nav a:first-of-type {
-  border: 0;
+.progress-bar__title {
+  margin-bottom: 18px;
+  font-size: 14px;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+.progress-bar__content {
+  display: flex;
+  align-items: center;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+.progress-bar__content__value {
+  font-size: 20px;
+  margin-right: 21px;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.progress-bar__content__bar {
+  position: relative;
+  background-color: #373737;
+  width: 100%;
+  height: 15px;
+}
 
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
+.progress-bar__content__bar::after {
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 50%;
+  background-color: #60ade8;
+}
 
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.control {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  background-color: #373737;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 200;
+}
+
+.button:not(:last-child){
+  margin-right: 25px;
 }
 </style>
