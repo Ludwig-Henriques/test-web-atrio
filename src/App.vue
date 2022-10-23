@@ -80,7 +80,7 @@ header {
   background-color: #373737;
   padding: 10px 16px;
   font-size: 14px;
-  font-weight: 200;
+  font-weight: 300;
   cursor: pointer;
 }
 
