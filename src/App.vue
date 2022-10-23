@@ -1,5 +1,39 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import ProgressBar from './components/ProgressBar.vue';
+
+const list = ref([
+  {
+    title: 'Initialisation du test technique',
+    value: 50,
+  },
+  {
+    title: 'Avancement de la phase de développement',
+    value: 25,
+  },
+]);
+
+function reset() {
+  list.value.forEach((task) => {
+    task.value = 0;
+  });
+}
+
+function addFive() {
+  list.value.forEach((task) => {
+    if (task.value < 100) {
+      task.value = task.value + 5 < 100 ? task.value + 5 : 100;
+    }
+  });
+}
+
+function addTen() {
+  list.value.forEach((task) => {
+    if (task.value < 100) {
+      task.value = task.value + 10 < 100 ? task.value + 10 : 100;
+    }
+  });
+}
 </script>
 
 <template>
@@ -10,18 +44,16 @@ import ProgressBar from './components/ProgressBar.vue';
     </header>
     <div class="list">
       <ProgressBar
-        title="Initialisation du test technique"
-        :progressValue="50"
-      ></ProgressBar>
-      <ProgressBar
-        title="Avancement de la phase de développement"
-        :progressValue="25"
+        v-for="task in list"
+        :key="task.title + task.value"
+        :title="task.title"
+        :progressValue="task.value"
       ></ProgressBar>
     </div>
     <div class="control">
-      <span class="button">Remettre à zero les compteur</span>
-      <span class="button">Ajouter 5%</span>
-      <span class="button">Ajouter 10%</span>
+      <span class="button" @click="reset">Remettre à zero les compteur</span>
+      <span class="button" @click="addFive">Ajouter 5%</span>
+      <span class="button" @click="addTen">Ajouter 10%</span>
     </div>
   </div>
 </template>
@@ -49,6 +81,7 @@ header {
   padding: 10px 16px;
   font-size: 14px;
   font-weight: 200;
+  cursor: pointer;
 }
 
 .button:not(:last-child){
