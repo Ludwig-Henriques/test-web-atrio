@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ProgressBar from './components/ProgressBar.vue';
 </script>
 
 <template>
@@ -8,20 +9,14 @@
       <p>réalisé le 23/10/2022</p>
     </header>
     <div class="list">
-      <div class="progress-bar">
-        <p class="progress-bar__title">Initialisation du test technique</p>
-        <div class="progress-bar__content">
-          <p class="progress-bar__content__value">50%</p>
-          <p class="progress-bar__content__bar"></p>
-        </div>
-      </div>
-      <div class="progress-bar">
-        <p class="progress-bar__title">Avancement de la phase de développement</p>
-        <div class="progress-bar__content">
-          <p class="progress-bar__content__value">50%</p>
-          <p class="progress-bar__content__bar"></p>
-        </div>
-      </div>
+      <ProgressBar
+        title="Initialisation du test technique"
+        :progressValue="50"
+      ></ProgressBar>
+      <ProgressBar
+        title="Avancement de la phase de développement"
+        :progressValue="25"
+      ></ProgressBar>
     </div>
     <div class="control">
       <span class="button">Remettre à zero les compteur</span>
@@ -42,44 +37,6 @@ header {
 
 .list {
   margin-bottom: 100px;
-}
-
-.progress-bar {
-  font-weight: 200;
-}
-
-.progress-bar:not(:last-child) {
-  margin-bottom: 49px;
-}
-
-.progress-bar__title {
-  margin-bottom: 18px;
-  font-size: 14px;
-}
-
-.progress-bar__content {
-  display: flex;
-  align-items: center;
-}
-
-.progress-bar__content__value {
-  font-size: 20px;
-  margin-right: 21px;
-}
-
-.progress-bar__content__bar {
-  position: relative;
-  background-color: #373737;
-  width: 100%;
-  height: 15px;
-}
-
-.progress-bar__content__bar::after {
-  position: absolute;
-  content: '';
-  height: 100%;
-  width: 50%;
-  background-color: #60ade8;
 }
 
 .control {
